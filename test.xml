@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+  <class>
+    <name>A</name>
+    <info>
+      <color>red</color>
+      <type>1</type>
+    </info>
+  </class>
+  <class>
+    <name>B</name>
+    <info>
+      <color>blue</color>
+      <type>2</type>
+    </info>
+  </class>
+  <class>
+    <name>C</name>
+    <info>
+      <color>green</color>
+      <type>3</type>
+    </info>
+  </class>
+  <class>
+    <name>D</name>
+    <info>
+      <color>black</color>
+      <type>4</type>
+    </info>
+  </class>
+</data>
