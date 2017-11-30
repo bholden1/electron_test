@@ -28,4 +28,32 @@
       <type>4</type>
     </info>
   </class>
+  <class>
+    <name>E</name>
+    <info>
+      <color>white</color>
+      <type>5</type>
+    </info>
+  </class>
+  <class>
+    <name>F</name>
+    <info>
+      <color>purple</color>
+      <type>6</type>
+    </info>
+  </class>
+  <class>
+    <name>G</name>
+    <info>
+      <color>cyan</color>
+      <type>7</type>
+    </info>
+  </class>
+  <class>
+    <name>H</name>
+    <info>
+      <color>teal</color>
+      <type>8</type>
+    </info>
+  </class>
 </data>
