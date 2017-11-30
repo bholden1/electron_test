@@ -1,20 +1,18 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "electron_test",
+  "version": "0.0.1",
+  "description": "Ben learning how to make an Electron application",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/bholden1/electron_test",
   "keywords": [
     "Electron",
     "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "start"
   ],
-  "author": "GitHub",
+  "author": "Ben Holden",
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "~1.7.8"
