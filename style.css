@@ -2,10 +2,18 @@
 {
   position: fixed;
   top: 0px;
-  height: 20px;
+  height: 100px;
   width: 100%;
-  background: green;
+  background-color: #F45342;
 }
+
+#body
+{
+  margin-top: 110px;
+  height: 100%;
+  overflow: auto;
+}
+
 .dropbtn
 {
   background-color: #4CAF50;
