@@ -1,6 +1,4 @@
-TODO
-
-http://jsfiddle.net/austinbv/2KTFG/
+TODO: Make more personal
 
 ## License
 

@@ -25,9 +25,7 @@ function parseClassNames(xml)
 
     var name = c.getElementsByTagName("name");
 
-    table += "<tr><td>" +
-    name[0].textContent.toString() +
-    "</td></tr>";
+    table += "<tr><td>" + name[0].textContent.toString() + "</td></tr>";
 
     var color, type;
     for (var j = 0; j < c.children.length; j++)
