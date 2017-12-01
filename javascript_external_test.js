@@ -29,10 +29,23 @@ function parseClassNames(xml)
     name[0].textContent.toString() +
     "</td></tr>";
 
-    classes.push(name[0].textContent.toString());
-    //  +
-    // x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
-    // "</td></tr>";
+    var color, type;
+    for (var j = 0; j < c.children.length; j++)
+    {
+      var e = c.children[j]
+
+      color = e.getElementsByTagName("color");
+      type = e.getElementsByTagName("type");
+    }
+
+    var classi =
+    {
+      name : name[0].textContent.toString(),
+      color : color[0].textContent.toString(),
+      type : type[0].textContent.toString()
+    }
+
+    classes.push(classi);
   }
   document.getElementById("demo").innerHTML = table;
   updateDropdownList();
@@ -40,35 +53,24 @@ function parseClassNames(xml)
 
 function updateDropdownList()
 {
-  ddlist = "";
+  ddlist = "<option hidden=&quot;true&quot;>Please select a class</option>";
   for (var i = 0; i < classes.length; i++)
   {
-    ddlist += "<a href=&quot;#" + classes[i] + "&quot;>" + classes[i] + "</a>"
+    ddlist += "<option value=&quot;#" + classes[i].name + "&quot;>" + classes[i].name + "</option>";
   }
-  document.getElementById("myDropdown").innerHTML = ddlist
+  document.getElementById("myDropdown").innerHTML = ddlist;
 }
 
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function showDropdownList()
+function showClassDetails()
 {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event)
-{
-  if (!event.target.matches('.dropbtn'))
+  var sel = document.getElementById("myDropdown");
+  table = "<tr><th>Name</th><th>Color</th><th>Type</th></tr>";
+  for (var i = 0; i < classes.length; i++)
   {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++)
+    if (classes[i].name == sel.options[sel.selectedIndex].text)
     {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show'))
-      {
-        openDropdown.classList.remove('show');
-      }
+      table += "<tr><td>" + classes[i].name + "</td><td>" + classes[i].color + "</td><td>" + classes[i].type + "</td></tr>";
     }
   }
+  document.getElementById("class_details").innerHTML = table;
 }
