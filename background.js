@@ -9,16 +9,19 @@ function loadXMLDoc()
     if (this.readyState == 4 && this.status == 200)
     {
       xmlDoc = this.responseXML;
+      getDropdown("class", "classDropdown");
+      getDropdown("race", "raceDropdown");
+      getDropdown("background", "backgroundDropdown");
       // parseClassNames(this);
     }
   };
   xmlhttp.open("GET", "../DnDAppFiles/Compendiums/Full Compendium.xml", true);
   xmlhttp.send();
 }
-window.onload = loadXMLDoc;
 
 function getElementList(name)
 {
+  console.log(xmlDoc);
   var x = xmlDoc.getElementsByTagName(name);
   var eList = [];
   for (var i = 0; i < x.length; i++)
@@ -30,9 +33,14 @@ function getElementList(name)
   return eList;
 }
 
-function elementListToTable(eList)
+function getDropdown(name, dd_id)
 {
-
+  var eList = getElementList(name);
+  var ddlist = "<option hidden=&quot;true&quot;>Please select a " + name + "</option>";
+  for (var i = 0; i < eList.length; i++) {
+    ddlist += "<option value=&quot;#" + eList[i] + "&quot;>" + eList[i] + "</option>";
+  }
+  document.getElementById(dd_id).innerHTML = ddlist;
 }
 
 function parseClassNames(xml)
@@ -94,3 +102,5 @@ function showClassDetails()
   }
   document.getElementById("class_details").innerHTML = table;
 }
+
+window.onload = loadXMLDoc;
