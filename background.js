@@ -8,13 +8,24 @@ function loadXMLDoc()
   {
     if (this.readyState == 4 && this.status == 200)
     {
-      parseClassNames(this);
+      xmlDoc = this.responseXML;
+      // parseClassNames(this);
     }
   };
-  xmlhttp.open("GET", "test.xml", true);
+  xmlhttp.open("GET", "../DnDAppFiles/Compendiums/Full Compendium.xml", true);
   xmlhttp.send();
 }
 window.onload = loadXMLDoc;
+
+function getElementList(name)
+{
+  var x = xmlDoc.getElementsByTagName(name);
+  for (var i = 0; i < x.length; i++)
+  {
+    var e_name = x[i].getElementsByTagName("name")[0].textContent.toString();
+    console.log(e_name);
+  }
+}
 
 function parseClassNames(xml)
 {
