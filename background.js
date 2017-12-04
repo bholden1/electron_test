@@ -20,11 +20,19 @@ window.onload = loadXMLDoc;
 function getElementList(name)
 {
   var x = xmlDoc.getElementsByTagName(name);
+  var eList = [];
   for (var i = 0; i < x.length; i++)
   {
     var e_name = x[i].getElementsByTagName("name")[0].textContent.toString();
+    eList.push(e_name);
     console.log(e_name);
   }
+  return eList;
+}
+
+function elementListToTable(eList)
+{
+
 }
 
 function parseClassNames(xml)
