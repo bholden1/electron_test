@@ -65,7 +65,7 @@ function parseClassNames(xml)
 
 function updateDropdownList()
 {
-  ddlist = "<option hidden=&quot;true&quot;>Please select a class</option>";
+  var ddlist = "<option hidden=&quot;true&quot;>Please select a class</option>";
   for (var i = 0; i < classes.length; i++)
   {
     ddlist += "<option value=&quot;#" + classes[i].name + "&quot;>" + classes[i].name + "</option>";
@@ -76,7 +76,7 @@ function updateDropdownList()
 function showClassDetails()
 {
   var sel = document.getElementById("myDropdown");
-  table = "<tr><th>Name</th><th>Color</th><th>Type</th></tr>";
+  var table = "<tr><th>Name</th><th>Color</th><th>Type</th></tr>";
   for (var i = 0; i < classes.length; i++)
   {
     if (classes[i].name == sel.options[sel.selectedIndex].text)
