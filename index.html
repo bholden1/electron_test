@@ -9,20 +9,33 @@
   <body>
     <div id="locked_header">
       <h1><center>Make a Something!</center></h1>
-      <p>Please select elements to see what happens</p>
+      <p>Overview</p>
     </div>
 
     <div id="body">
       <!-- <br> -->
-      <button type="button" onclick="loadXMLDoc()">Read my XML file</button>
+      <table id="top_table">
+        <tr>
+          <td>
+            <button type="button" onclick="loadXMLDoc()">Read my XML file</button>
+          </td>
+          <td>
+            <select name="class_select" id="myDropdown" onchange="showClassDetails()">
+              <option hidden="true">Please select a class</option>
+              <option value="null" disabled>Data Not Loaded</option>
+            </select>
+          </td>
+        </tr>
       <!-- <br> -->
 
-      <table id="demo"></table>
+      <table id="basic_info" width="100%" align="center">
+        <tr><td colspan="2">Name</td><td colspan="2">Player</td></tr>
+        <tr><td>Sex</td><td>Age</td><td>Height</td><td>Weight</td></tr>
+        <tr><td colspan="2">Race</td><td>Alignment</td><td>Experience Points</td></tr>
+        <tr><td colspan="3">Classes/Levels</td><td>Background</td></tr>
+      </table>
 
-      <select name="class_select" id="myDropdown" onchange="showClassDetails()">
-        <option hidden="true">Please select a class</option>
-        <option value="null" disabled>Data Not Loaded</option>
-      </select>
+      <table id="demo"></table>
 
       <table id="class_details"></table>
 

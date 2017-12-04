@@ -13,6 +13,8 @@ function loadXMLDoc()
   xmlhttp.open("GET", "test.xml", true);
   xmlhttp.send();
 }
+window.onload = loadXMLDoc;
+
 function parseClassNames(xml)
 {
   var xmlDoc = xml.responseXML;
