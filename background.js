@@ -1,4 +1,5 @@
 var classes = [];
+var xmlDoc;
 
 function loadXMLDoc()
 {
@@ -17,7 +18,7 @@ window.onload = loadXMLDoc;
 
 function parseClassNames(xml)
 {
-  var xmlDoc = xml.responseXML;
+  xmlDoc = xml.responseXML;
   var table="<tr><th>Name</th></tr>";
   var x = xmlDoc.childNodes[0];
   classes = [];

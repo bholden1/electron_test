@@ -14,7 +14,7 @@
 
     <div id="body">
       <!-- <br> -->
-      <table id="top_table">
+      <!-- <table id="top_table">
         <tr>
           <td>
             <button type="button" onclick="loadXMLDoc()">Read my XML file</button>
@@ -26,13 +26,76 @@
             </select>
           </td>
         </tr>
+      </table> -->
       <!-- <br> -->
 
       <table id="basic_info" width="100%" align="center">
-        <tr><td colspan="2">Name</td><td colspan="2">Player</td></tr>
-        <tr><td>Sex</td><td>Age</td><td>Height</td><td>Weight</td></tr>
-        <tr><td colspan="2">Race</td><td>Alignment</td><td>Experience Points</td></tr>
-        <tr><td colspan="3">Classes/Levels</td><td>Background</td></tr>
+        <tr>
+          <td colspan="2">Name<br>
+            <input type="text" name="Char_Name" value="" style="width: 99%;">
+          </td>
+          <td colspan="2">Player<br>
+            <input type="text" name="Player_Name" value="" style="width: 99%;">
+          </td>
+        </tr>
+        <tr>
+          <td>Sex<br>
+            <select name="sex_select" style="width: 99%;">
+              <option hidden="true">Please select a sex</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </td>
+          <td>Age<br>
+            <input type="text" name="Age" value="" style="width: 99%;">
+          </td>
+          <td>Height<br>
+            <input type="text" name="Height" value="" style="width: 99%;">
+          </td>
+          <td>Weight<br>
+            <input type="text" name="Weight" value="" style="width: 99%;">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">Race<br>
+            <select name="race_select" id="raceDropdown" onchange="" style="width: 99%;">
+              <option hidden="true">Please select a race</option>
+              <option value="null" disabled>Data Not Loaded</option>
+            </select>
+          </td>
+          <td>Alignment<br>
+            <select name="alignment_select" style="width: 99%;">
+              <option hidden="true">Please select an alignment</option>
+              <option value="LG">Lawful Good</option>
+              <option value="LN">Lawful Neutral</option>
+              <option value="LE">Lawful Good</option>
+              <option value="NG">Neutral Good</option>
+              <option value="NN">True Neutral</option>
+              <option value="NE">Neutral Good</option>
+              <option value="CG">Chaotic Good</option>
+              <option value="CN">Chaotic Neutral</option>
+              <option value="CE">Chaotic Good</option>
+            </select>
+          </td>
+          <td>Experience Points<br>
+            <input type="text" name="XP" value="" style="width: 99%;">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">Classes/Levels<br>
+            <select name="class_select" id="classDropdown" onchange="" style="width: 99%;">
+              <option hidden="true">Please select a class</option>
+              <option value="null" disabled>Data Not Loaded</option>
+            </select>
+          </td>
+          <td>Background<br>
+            <select name="bg_select" id="bgDropdown" onchange="" style="width: 99%;">
+              <option hidden="true">Please select a background</option>
+              <option value="null" disabled>Data Not Loaded</option>
+            </select>
+          </td>
+        </tr>
       </table>
 
       <table id="demo"></table>
