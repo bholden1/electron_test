@@ -2,44 +2,61 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Make a Something!</title>
+    <title>The Forge</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <script src="background.js"></script>
   </head>
   <body>
     <div id="locked_header">
-      <h1><center>Make a Something!</center></h1>
-      <p>Overview</p>
+      <h1><center>The Forge</center></h1>
+      <table class="test_table" id="locked_header_table" border=1><tr>
+        <th onclick="demoText(0, 'Character Creator');">Make a New Character</th>
+        <th onclick="demoText(1, 'Spell Grimoire');">Find a Spell</th>
+        <th onclick="demoText(2, 'Monster Tome');">Find a Monster</th>
+        <th onclick="demoText(3, 'Glorious Goods');">Find an Item</th>
+      </tr></table>
     </div>
 
     <div id="body">
+      <div id="characters">
+        <div id=sub_header></div>
+      </div>
+
+      <div id="spells">
+        <div id=sub_header></div>
+      </div>
+
+      <div id="monsters">
+        <div id=sub_header></div>
+      </div>
+
+      <div id="items">
+        <div id=sub_header></div>
+      </div>
+
       <br>
-      <table id="top_table">
+      <table class="test_table" id="top_table">
         <tr>
-          <td>
-            <button type="button" onclick="">Race</button>
+          <td onclick="loadRaceTable()">Race</button>
           </td>
-          <td>
-            <button type="button" onclick="">Ability Scores/Feats</button>
+          <td onclick="">Ability Scores/Feats</button>
           </td>
-          <td>
-            <button type="button" onclick="">Background</button>
+          <td onclick="loadBackgroundTable()">Background</button>
           </td>
-          <td>
-            <button type="button" onclick="">Class/Level</button>
+          <td onclick="">Class/Level</button>
           </td>
-          <td>
-            <button type="button" onclick="">Spells</button>
+          <td onclick="loadSpellTable()">Spells</button>
           </td>
-          <td>
-            <button type="button" onclick="">Proficiencies</button>
+          <td onclick="">Proficiencies</button>
           </td>
-          <td>
-            <button type="button" onclick="">Equipment</button>
+          <td onclick="">Equipment</button>
           </td>
         </tr>
       </table>
       <br>
+      <p id='debug'></p>
+      <div id="race_table"></div>
+      <div id="background_table"></div>
 
       <table id="basic_info" width="100%" align="center">
         <tr>
@@ -110,13 +127,9 @@
         </tr>
       </table>
 
-      <table id="selection_details">
-
-      </table>
+      <table id="selection_details"></table>
 
       <table id="class_details"></table>
-
-      <p id="debug"></p>
 
     </div>
     <script>

@@ -1,4 +1,13 @@
 var xmlDoc;
+var data =
+{
+  "spell" : [],
+  "monster" : [],
+  "item" : [],
+  "class" : [],
+  "background" : [],
+  "race" : []
+};
 
 function loadXMLDoc()
 {
@@ -8,6 +17,7 @@ function loadXMLDoc()
     if (this.readyState == 4 && this.status == 200)
     {
       xmlDoc = this.responseXML;
+      loadData();
       getDropdown("class", "classDropdown");
       getDropdown("race", "raceDropdown");
       getDropdown("background", "backgroundDropdown");
@@ -18,16 +28,29 @@ function loadXMLDoc()
   xmlhttp.send();
 }
 
+function loadData()
+{
+  for (var i = 0; i < xmlDoc.children[0].children.length; ++i)
+  {
+    var childNode = xmlDoc.children[0].children[i];
+    if (data.hasOwnProperty(childNode.tagName))
+    {
+      console.log(childNode.tagName);
+      data[childNode.tagName].push(childNode);
+    }
+  }
+}
+
 function getElementList(name)
 {
-  console.log(xmlDoc);
   var x = xmlDoc.getElementsByTagName(name);
   var eList = [];
   for (var i = 0; i < x.length; i++)
   {
     var e_name = x[i].getElementsByTagName("name")[0].textContent.toString();
     eList.push(e_name);
-    console.log(e_name);
+    // console.log(e_name);
+    // console.log(x[i]);
   }
   return eList;
 }
@@ -41,6 +64,72 @@ function getDropdown(name, dd_id)
   }
   document.getElementById(dd_id).innerHTML = ddlist;
 }
+
+function loadRaceTable()
+{
+  var innerTable = "<table width='100%' text-align='left' border=1>";
+  for (var i = 0; i < data['race'].length; ++i)
+  {
+    innerTable += "<tr>";
+    for (var j = 0; j < data['race'][i].children.length; ++j)
+    {
+      var c = data['race'][i].children[j];
+      // if (c.tagName != "trait")
+      innerTable += "<td>" + c.tagName + " : " + c.textContent + "</td>";
+    }
+    innerTable += "</tr>";
+  }
+  innerTable += "</table>";
+  document.getElementById("race_table").innerHTML = innerTable;
+  hideBackgroundTable();
+  console.log("test");
+}
+
+function hideRaceTable()
+{
+  var innerTable = "<table width='100%' hidden='true'></table>";
+  document.getElementById("race_table").innerHTML = innerTable;
+}
+
+function loadBackgroundTable()
+{
+  var innerTable = "<table width='100%' text-align='left' border=1>";
+  for (var i = 0; i < data['background'].length; ++i)
+  {
+    innerTable += "<tr>";
+    for (var j = 0; j < data['background'][i].children.length; ++j)
+    {
+      var c = data['background'][i].children[j];
+      // if (c.tagName != "trait")
+      innerTable += "<td>" + c.tagName + " : " + c.textContent + "</td>";
+    }
+    innerTable += "</tr>";
+  }
+  innerTable += "</table>";
+  document.getElementById("background_table").innerHTML = innerTable;
+  hideRaceTable();
+}
+
+function hideBackgroundTable()
+{
+  var innerTable = "<table width='100%' hidden='true'></table>";
+  document.getElementById("background_table").innerHTML = innerTable;
+}
+
+function demoText(id, text)
+{
+  var th = document.getElementById("locked_header_table").getElementsByTagName("th");
+  for (var i = 0; i < th.length; ++i)
+  {
+    var color = "transparent";
+    if (id == i)
+      color = "yellow";
+    th[i].style.backgroundColor = color;
+  }
+  document.getElementById("debug").innerHTML = text;
+}
+
+console.log("test");
 
 // function parseClassNames(xml)
 // {
