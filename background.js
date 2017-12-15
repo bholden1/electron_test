@@ -67,41 +67,43 @@ function getDropdown(name, dd_id)
 
 function loadRaceTable()
 {
-  var innerTable = "<table width='100%' text-align='left' border=1>";
-  for (var i = 0; i < data['race'].length; ++i)
+  var innerTable = "<table class='sep_table' border=1>";
+  innerTable += "<tr><th>Name</th><th>Size</th><th>Speed</th><th>Ability</th></tr>";
+  for (var i = 0; i < data["race"].length; ++i)
   {
     innerTable += "<tr>";
-    for (var j = 0; j < data['race'][i].children.length; ++j)
+    for (var j = 0; j < data["race"][i].children.length; ++j)
     {
-      var c = data['race'][i].children[j];
-      // if (c.tagName != "trait")
-      innerTable += "<td>" + c.tagName + " : " + c.textContent + "</td>";
+      var c = data["race"][i].children[j];
+      if (c.tagName != "trait" && c.tagName !="proficiency")
+        innerTable += "<td>" + c.textContent + "</td>";
     }
     innerTable += "</tr>";
   }
   innerTable += "</table>";
-  document.getElementById("race_table").innerHTML = innerTable;
+  document.getElementById("sub_body").innerHTML = innerTable;
   hideBackgroundTable();
   console.log("test");
 }
 
 function hideRaceTable()
 {
-  var innerTable = "<table width='100%' hidden='true'></table>";
-  document.getElementById("race_table").innerHTML = innerTable;
+  var innerTable = "<table width='100%' hidden></table>";
+  document.getElementById("sub_body").innerHTML = innerTable;
 }
 
 function loadBackgroundTable()
 {
-  var innerTable = "<table width='100%' text-align='left' border=1>";
-  for (var i = 0; i < data['background'].length; ++i)
+  var innerTable = "<table class='sep_table' border=1>";
+  innerTable += "<tr><th>Name</th><th>Proficiency</th></tr>";
+  for (var i = 0; i < data["background"].length; ++i)
   {
     innerTable += "<tr>";
-    for (var j = 0; j < data['background'][i].children.length; ++j)
+    for (var j = 0; j < data["background"][i].children.length; ++j)
     {
-      var c = data['background'][i].children[j];
-      // if (c.tagName != "trait")
-      innerTable += "<td>" + c.tagName + " : " + c.textContent + "</td>";
+      var c = data["background"][i].children[j];
+      if (c.tagName != "trait")
+        innerTable += "<td>" + c.textContent + "</td>";
     }
     innerTable += "</tr>";
   }
@@ -112,7 +114,7 @@ function loadBackgroundTable()
 
 function hideBackgroundTable()
 {
-  var innerTable = "<table width='100%' hidden='true'></table>";
+  var innerTable = "<table width='100%' hidden></table>";
   document.getElementById("background_table").innerHTML = innerTable;
 }
 

@@ -6,10 +6,10 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <script src="background.js"></script>
   </head>
-  <body>
-    <div id="locked_header">
+  <body id=body>
+    <div class="locked_header">
       <h1><center>The Forge</center></h1>
-      <table class="test_table" id="locked_header_table" border=1><tr>
+      <table class="basic_table" id="locked_header_table"><tr>
         <th onclick="demoText(0, 'Character Creator');">Make a New Character</th>
         <th onclick="demoText(1, 'Spell Grimoire');">Find a Spell</th>
         <th onclick="demoText(2, 'Monster Tome');">Find a Monster</th>
@@ -17,48 +17,62 @@
       </tr></table>
     </div>
 
-    <div id="body">
+    <div id="main_body">
       <div id="characters">
-        <div id=sub_header></div>
+        <div class=sub_header>
+          <table class="basic_table" id="top_table"><tr>
+            <th onclick="loadRaceTable()">Race</th>
+            <th onclick="">Ability Scores/Feats</th>
+            <th onclick="loadBackgroundTable()">Background</th>
+            <th onclick="">Class/Level</th>
+            <th onclick="loadSpellTable()">Spells</th>
+            <th onclick="">Proficiencies</th>
+            <th onclick="">Equipment</th>
+          </tr></table>
+        </div>
+        <div id=sub_body>
+        </div>
       </div>
 
-      <div id="spells">
-        <div id=sub_header></div>
+      <div id="spells" hidden>
+        <div class=sub_header>
+          <table class="basic_table" id="top_table"><tr>
+            <th onclick="">Class</th>
+            <th onclick="">Level</th>
+            <th onclick="">School</th>
+            <th onclick="">Search</th>
+          </tr></table>
+        </div>
       </div>
 
-      <div id="monsters">
-        <div id=sub_header></div>
+      <div id="monsters" hidden>
+        <div class=sub_header>
+          <table class="basic_table" id="top_table"><tr>
+            <th onclick="">Type</th>
+            <th onclick="">Alignment</th>
+            <th onclick="">Size</th>
+            <th onclick="">Min CR</th>
+            <th onclick="">Max CR</th>
+          </tr></table>
+        </div>
       </div>
 
-      <div id="items">
-        <div id=sub_header></div>
+      <div id="items" hidden>
+        <div class=sub_header>
+          <table class="basic_table" id="top_table"><tr>
+            <th onclick="">Type</th>
+            <th onclick="">Magic</th>
+            <th onclick="">Value</th>
+            <th onclick="">Rarity</th>
+          </tr></table>
+        </div>
       </div>
 
-      <br>
-      <table class="test_table" id="top_table">
-        <tr>
-          <td onclick="loadRaceTable()">Race</button>
-          </td>
-          <td onclick="">Ability Scores/Feats</button>
-          </td>
-          <td onclick="loadBackgroundTable()">Background</button>
-          </td>
-          <td onclick="">Class/Level</button>
-          </td>
-          <td onclick="loadSpellTable()">Spells</button>
-          </td>
-          <td onclick="">Proficiencies</button>
-          </td>
-          <td onclick="">Equipment</button>
-          </td>
-        </tr>
-      </table>
-      <br>
       <p id='debug'></p>
       <div id="race_table"></div>
       <div id="background_table"></div>
 
-      <table id="basic_info" width="100%" align="center">
+      <!-- <table id="basic_info" width="100%" align="center">
         <tr>
           <td colspan="2">Name<br>
             <input type="text" name="Char_Name" value="" style="width: 99%;">
@@ -125,11 +139,11 @@
             </select>
           </td>
         </tr>
-      </table>
+      </table> -->
 
-      <table id="selection_details"></table>
+      <!-- <table id="selection_details"></table>
 
-      <table id="class_details"></table>
+      <table id="class_details"></table> -->
 
     </div>
     <script>
