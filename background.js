@@ -67,7 +67,7 @@ function getDropdown(name, dd_id)
 
 function loadRaceTable()
 {
-  var innerTable = "<table class='sep_table' border=1>";
+  var innerTable = "<table class='basic_table sep_table' border=1>";
   innerTable += "<tr><th>Name</th><th>Size</th><th>Speed</th><th>Ability</th></tr>";
   for (var i = 0; i < data["race"].length; ++i)
   {
@@ -94,7 +94,7 @@ function hideRaceTable()
 
 function loadBackgroundTable()
 {
-  var innerTable = "<table class='sep_table' border=1>";
+  var innerTable = "<table class='basic_table sep_table' border=1>";
   innerTable += "<tr><th>Name</th><th>Proficiency</th></tr>";
   for (var i = 0; i < data["background"].length; ++i)
   {
@@ -108,14 +108,14 @@ function loadBackgroundTable()
     innerTable += "</tr>";
   }
   innerTable += "</table>";
-  document.getElementById("background_table").innerHTML = innerTable;
+  document.getElementById("sub_body").innerHTML = innerTable;
   hideRaceTable();
 }
 
 function hideBackgroundTable()
 {
   var innerTable = "<table width='100%' hidden></table>";
-  document.getElementById("background_table").innerHTML = innerTable;
+  document.getElementById("sub_body").innerHTML = innerTable;
 }
 
 function demoText(id, text)

@@ -44,19 +44,13 @@
 .sep_table
 {
   border-spacing:0px;
-  border-color: transparent;
   border-bottom-color: black;
-  border-collapse: separate;
   width: 100%;
-  text-align: left;
 }
 
-.sep_table th:hover
+/* .sep_table th:hover
 {
-  color: rgb(95, 95, 95);
-  border-bottom-color: black;
-  text-align: left;
-}
+} */
 
 /* td
 {
