@@ -18,9 +18,9 @@ function loadXMLDoc()
     {
       xmlDoc = this.responseXML;
       loadData();
-      getDropdown("class", "classDropdown");
-      getDropdown("race", "raceDropdown");
-      getDropdown("background", "backgroundDropdown");
+      // getDropdown("class", "classDropdown");
+      // getDropdown("race", "raceDropdown");
+      // getDropdown("background", "backgroundDropdown");
       // parseClassNames(this);
     }
   };
@@ -82,15 +82,15 @@ function loadRaceTable()
   }
   innerTable += "</table>";
   document.getElementById("sub_body").innerHTML = innerTable;
-  hideBackgroundTable();
-  console.log("test");
+  // hideBackgroundTable();
+  // console.log("test");
 }
 
-function hideRaceTable()
-{
-  var innerTable = "<table width='100%' hidden></table>";
-  document.getElementById("sub_body").innerHTML = innerTable;
-}
+// function hideRaceTable()
+// {
+//   var innerTable = "<table width='100%' hidden></table>";
+//   document.getElementById("sub_body").innerHTML = innerTable;
+// }
 
 function loadBackgroundTable()
 {
@@ -109,14 +109,14 @@ function loadBackgroundTable()
   }
   innerTable += "</table>";
   document.getElementById("sub_body").innerHTML = innerTable;
-  hideRaceTable();
+  // hideRaceTable();
 }
 
-function hideBackgroundTable()
-{
-  var innerTable = "<table width='100%' hidden></table>";
-  document.getElementById("sub_body").innerHTML = innerTable;
-}
+// function hideBackgroundTable()
+// {
+//   var innerTable = "<table width='100%' hidden></table>";
+//   document.getElementById("sub_body").innerHTML = innerTable;
+// }
 
 function demoText(id, text)
 {
