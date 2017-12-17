@@ -6,6 +6,7 @@ var data =
   "item" : [],
   "class" : [],
   "background" : [],
+  "feat" : [],
   "race" : []
 };
 
@@ -18,10 +19,6 @@ function loadXMLDoc()
     {
       xmlDoc = this.responseXML;
       loadData();
-      // getDropdown("class", "classDropdown");
-      // getDropdown("race", "raceDropdown");
-      // getDropdown("background", "backgroundDropdown");
-      // parseClassNames(this);
     }
   };
   xmlhttp.open("GET", "../DnDAppFiles/Compendiums/Full Compendium.xml", true);
@@ -34,10 +31,7 @@ function loadData()
   {
     var childNode = xmlDoc.children[0].children[i];
     if (data.hasOwnProperty(childNode.tagName))
-    {
-      console.log(childNode.tagName);
       data[childNode.tagName].push(childNode);
-    }
   }
 }
 
@@ -49,8 +43,6 @@ function getElementList(name)
   {
     var e_name = x[i].getElementsByTagName("name")[0].textContent.toString();
     eList.push(e_name);
-    // console.log(e_name);
-    // console.log(x[i]);
   }
   return eList;
 }
@@ -65,73 +57,63 @@ function getDropdown(name, dd_id)
   document.getElementById(dd_id).innerHTML = ddlist;
 }
 
-function loadRaceTable()
+function loadTable(key)
 {
   var innerTable = "<table class='basic_table sep_table' border=1>";
-  innerTable += "<tr><th>Name</th><th>Size</th><th>Speed</th><th>Ability</th></tr>";
-  for (var i = 0; i < data["race"].length; ++i)
-  {
+  var tagNames = "";
+  var tagNamesArray = [];
+  // innerTable += "<tr><th>Name</th><th>Size</th><th>Speed</th><th>Ability</th></tr>";
+  for (var i = 0; i < data[key].length; ++i) {
     innerTable += "<tr>";
-    for (var j = 0; j < data["race"][i].children.length; ++j)
-    {
-      var c = data["race"][i].children[j];
-      if (c.tagName != "trait" && c.tagName !="proficiency")
-        innerTable += "<td>" + c.textContent + "</td>";
-    }
-    innerTable += "</tr>";
-  }
-  innerTable += "</table>";
-  document.getElementById("sub_body").innerHTML = innerTable;
-  // hideBackgroundTable();
-  // console.log("test");
-}
-
-// function hideRaceTable()
-// {
-//   var innerTable = "<table width='100%' hidden></table>";
-//   document.getElementById("sub_body").innerHTML = innerTable;
-// }
-
-function loadBackgroundTable()
-{
-  var innerTable = "<table class='basic_table sep_table' border=1>";
-  innerTable += "<tr><th>Name</th><th>Proficiency</th></tr>";
-  for (var i = 0; i < data["background"].length; ++i)
-  {
-    innerTable += "<tr>";
-    for (var j = 0; j < data["background"][i].children.length; ++j)
-    {
-      var c = data["background"][i].children[j];
+    for (var j = 0; j < data[key][i].children.length; ++j) {
+      var c = data[key][i].children[j];
       if (c.tagName != "trait")
         innerTable += "<td>" + c.textContent + "</td>";
+      if (!tagNamesArray.includes(c.tagName))
+      {
+        tagNamesArray.push(c.tagName);
+        tagNames += c.tagName + "\n";
+      }
     }
     innerTable += "</tr>";
   }
   innerTable += "</table>";
   document.getElementById("sub_body").innerHTML = innerTable;
-  // hideRaceTable();
+  document.getElementById("debug").innerHTML = tagNames;  
 }
 
-// function hideBackgroundTable()
-// {
-//   var innerTable = "<table width='100%' hidden></table>";
-//   document.getElementById("sub_body").innerHTML = innerTable;
-// }
-
-function demoText(id, text)
+function selectFromTopHeader(id, key)
 {
   var th = document.getElementById("locked_header_table").getElementsByTagName("th");
   for (var i = 0; i < th.length; ++i)
   {
     var color = "transparent";
     if (id == i)
-      color = "yellow";
+      color = "rgb(237, 253, 92)";
     th[i].style.backgroundColor = color;
   }
-  document.getElementById("debug").innerHTML = text;
+  var div = document.getElementById("main_body").children;
+  for (var i = 0; i < div.length; ++i)
+  {
+    visibility = "hidden";
+    if (id == i)
+      visibility = "";
+    div[i].style.visibility = visibility;        
+  }
 }
 
-console.log("test");
+function selectFromSubHeader(body_div, id, key) 
+{
+  var th = document.getElementById(body_div).children[0].getElementsByTagName("th");
+  for (var i = 0; i < th.length; ++i) 
+  {
+    var color = "transparent";
+    if (id == i)
+      color = "rgb(255, 121, 80)";
+    th[i].style.backgroundColor = color;
+  }
+  loadTable(key);
+}
 
 // function parseClassNames(xml)
 // {

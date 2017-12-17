@@ -10,28 +10,29 @@
     <div class="locked_header">
       <h1><center>The Forge</center></h1>
       <table class="basic_table" id="locked_header_table"><tr>
-        <th onclick="demoText(0, 'Character Creator');">Make a New Character</th>
-        <th onclick="demoText(1, 'Spell Grimoire');">Find a Spell</th>
-        <th onclick="demoText(2, 'Monster Tome');">Find a Monster</th>
-        <th onclick="demoText(3, 'Glorious Goods');">Find an Item</th>
+        <th onclick="selectFromTopHeader(0, 'characters');">Make a New Character</th>
+        <th onclick="selectFromTopHeader(1, 'spells');">Find a Spell</th>
+        <th onclick="selectFromTopHeader(2, 'monster');">Find a Monster</th>
+        <th onclick="selectFromTopHeader(3, 'items');">Find an Item</th>
       </tr></table>
     </div>
 
+    <p id='debug'></p>      
     <div id="main_body">
+
       <div id="characters">
         <div class=sub_header>
           <table class="basic_table" id="top_table"><tr>
-            <th onclick="loadRaceTable()">Race</th>
-            <th onclick="">Ability Scores/Feats</th>
-            <th onclick="loadBackgroundTable()">Background</th>
-            <th onclick="">Class/Level</th>
-            <th onclick="loadSpellTable()">Spells</th>
-            <th onclick="">Proficiencies</th>
-            <th onclick="">Equipment</th>
+            <th onclick="selectFromSubHeader('characters', 0, 'race')">Race</th>
+            <th onclick="selectFromSubHeader('characters', 1, 'feats')">Ability Scores/Feats</th>
+            <th onclick="selectFromSubHeader('characters', 2, 'background')">Background</th>
+            <th onclick="selectFromSubHeader('characters', 3, 'class')">Class/Level</th>
+            <th onclick="selectFromSubHeader('characters', 4, 'spell')">Spells</th>
+            <th onclick="selectFromSubHeader('characters', 5, '')">Proficiencies</th>
+            <th onclick="selectFromSubHeader('characters', 6, 'item')">Equipment</th>
           </tr></table>
         </div>
-        <div id=sub_body>
-        </div>
+        <div id=sub_body></div>
       </div>
 
       <div id="spells" hidden>
@@ -43,6 +44,7 @@
             <th onclick="">Search</th>
           </tr></table>
         </div>
+        <div id=sub_body></div>        
       </div>
 
       <div id="monsters" hidden>
@@ -55,6 +57,7 @@
             <th onclick="">Max CR</th>
           </tr></table>
         </div>
+        <div id=sub_body></div>        
       </div>
 
       <div id="items" hidden>
@@ -66,9 +69,10 @@
             <th onclick="">Rarity</th>
           </tr></table>
         </div>
+        <div id=sub_body></div>        
       </div>
 
-      <p id='debug'></p>
+    </div>
 
       <!-- <table id="basic_info" width="100%" align="center">
         <tr>
@@ -143,7 +147,6 @@
 
       <table id="class_details"></table> -->
 
-    </div>
     <script>
       // You can also require other files to run in this process
       require('./renderer.js')
