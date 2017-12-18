@@ -23,6 +23,7 @@ function loadXMLDoc()
   };
   xmlhttp.open("GET", "../DnDAppFiles/Compendiums/Full Compendium.xml", true);
   xmlhttp.send();
+  //TODO: Load Feats.xml
 }
 
 function loadData()
@@ -59,15 +60,15 @@ function getDropdown(name, dd_id)
 
 function loadTable(key)
 {
-  var innerTable = "<table class='basic_table sep_table' border=1>";
+  var outerTable = "<table class='basic_table sep_table' border=1>";
+  var innerTable = "";
   var tagNames = "";
   var tagNamesArray = [];
-  // innerTable += "<tr><th>Name</th><th>Size</th><th>Speed</th><th>Ability</th></tr>";
   for (var i = 0; i < data[key].length; ++i) {
     innerTable += "<tr>";
     for (var j = 0; j < data[key][i].children.length; ++j) {
       var c = data[key][i].children[j];
-      if (c.tagName != "trait")
+      if (c.tagName != "trait" && c.tagName != "text" && c.children.length == 0)
         innerTable += "<td>" + c.textContent + "</td>";
       if (!tagNamesArray.includes(c.tagName))
       {
@@ -78,7 +79,11 @@ function loadTable(key)
     innerTable += "</tr>";
   }
   innerTable += "</table>";
-  document.getElementById("sub_body").innerHTML = innerTable;
+  var innerTableHeader = "<tr>";
+  for (var i = 0; i < tagNamesArray.length; ++i)
+    innerTableHeader += "<th>" + tagNamesArray[i] + "</th>";
+  innerTableHeader += "</tr>";
+  document.getElementById("sub_body").innerHTML = outerTable + innerTableHeader + innerTable;
   document.getElementById("debug").innerHTML = tagNames;
 }
 
