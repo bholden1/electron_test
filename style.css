@@ -48,6 +48,11 @@
   width: 100%;
 }
 
+.body_section
+{
+  display: none;
+}
+
 /* .sep_table th:hover
 {
 } */

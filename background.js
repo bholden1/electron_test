@@ -79,7 +79,7 @@ function loadTable(key)
   }
   innerTable += "</table>";
   document.getElementById("sub_body").innerHTML = innerTable;
-  document.getElementById("debug").innerHTML = tagNames;  
+  document.getElementById("debug").innerHTML = tagNames;
 }
 
 function selectFromTopHeader(id, key)
@@ -95,17 +95,17 @@ function selectFromTopHeader(id, key)
   var div = document.getElementById("main_body").children;
   for (var i = 0; i < div.length; ++i)
   {
-    visibility = "hidden";
+    visibility = "none";
     if (id == i)
-      visibility = "";
-    div[i].style.visibility = visibility;        
+      visibility = "block";
+    div[i].style.display = visibility;
   }
 }
 
-function selectFromSubHeader(body_div, id, key) 
+function selectFromSubHeader(body_div, id, key)
 {
   var th = document.getElementById(body_div).children[0].getElementsByTagName("th");
-  for (var i = 0; i < th.length; ++i) 
+  for (var i = 0; i < th.length; ++i)
   {
     var color = "transparent";
     if (id == i)
