@@ -80,14 +80,14 @@ function loadTable(key)
   }
   innerTable += "</table>";
   var innerTableHeader = "<tr>";
-  for (var i = 0; i < tagNamesArray.length; ++i)
+  for (i = 0; i < tagNamesArray.length; ++i)
     innerTableHeader += "<th>" + tagNamesArray[i] + "</th>";
   innerTableHeader += "</tr>";
   document.getElementById("sub_body").innerHTML = outerTable + innerTableHeader + innerTable;
   document.getElementById("debug").innerHTML = tagNames;
 }
 
-function selectFromTopHeader(id, key)
+function selectFromTopHeader(id)
 {
   var th = document.getElementById("locked_header_table").getElementsByTagName("th");
   for (var i = 0; i < th.length; ++i)
@@ -98,9 +98,9 @@ function selectFromTopHeader(id, key)
     th[i].style.backgroundColor = color;
   }
   var div = document.getElementById("main_body").children;
-  for (var i = 0; i < div.length; ++i)
+  for (i = 0; i < div.length; ++i)
   {
-    visibility = "none";
+    var visibility = "none";
     if (id == i)
       visibility = "block";
     div[i].style.display = visibility;
@@ -119,56 +119,5 @@ function selectFromSubHeader(body_div, id, key)
   }
   loadTable(key);
 }
-
-// function parseClassNames(xml)
-// {
-//   xmlDoc = xml.responseXML;
-//   var table="<tr><th>Name</th></tr>";
-//   var x = xmlDoc.childNodes[0];
-//   var classes = [];
-//   for (var i = 0; i < x.children.length; i++)
-//   {
-//     var c = x.children[i];
-
-//     var name = c.getElementsByTagName("name");
-
-//     table += "<tr><td>" + name[0].textContent.toString() + "</td></tr>";
-
-//     var color, type;
-//     for (var j = 0; j < c.children.length; j++)
-//     {
-//       var e = c.children[j];
-
-//       color = e.getElementsByTagName("color");
-//       type = e.getElementsByTagName("type");
-//     }
-
-//     var classi =
-//     {
-//       name : name[0].textContent.toString(),
-//       color : color[0].textContent.toString(),
-//       type : type[0].textContent.toString()
-//     };
-
-//     classes.push(classi);
-//   }
-//   document.getElementById("demo").innerHTML = table;
-//   updateDropdownList();
-// }
-
-// function showClassDetails()
-// {
-//   var classes;
-//   var sel = document.getElementById("myDropdown");
-//   var table = "<tr><th>Name</th><th>Color</th><th>Type</th></tr>";
-//   for (var i = 0; i < classes.length; i++)
-//   {
-//     if (classes[i].name == sel.options[sel.selectedIndex].text)
-//     {
-//       table += "<tr><td>" + classes[i].name + "</td><td>" + classes[i].color + "</td><td>" + classes[i].type + "</td></tr>";
-//     }
-//   }
-//   document.getElementById("class_details").innerHTML = table;
-// }
 
 window.onload = loadXMLDoc;
