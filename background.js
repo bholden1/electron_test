@@ -58,7 +58,7 @@ function getDropdown(name, dd_id)
   document.getElementById(dd_id).innerHTML = ddlist;
 }
 
-function loadTable(key)
+function loadTable(body_div, key)
 {
   var outerTable = "<table class='basic_table sep_table' border=1>";
   var innerTable = "";
@@ -83,7 +83,7 @@ function loadTable(key)
   for (i = 0; i < tagNamesArray.length; ++i)
     innerTableHeader += "<th>" + tagNamesArray[i] + "</th>";
   innerTableHeader += "</tr>";
-  document.getElementById("sub_body").innerHTML = outerTable + innerTableHeader + innerTable;
+  document.getElementById(body_div).children[1].innerHTML = outerTable + innerTableHeader + innerTable;
   document.getElementById("debug").innerHTML = tagNames;
 }
 
@@ -117,7 +117,60 @@ function selectFromSubHeader(body_div, id, key)
       color = "rgb(255, 121, 80)";
     th[i].style.backgroundColor = color;
   }
-  loadTable(key);
+  if (key == "race")
+    buildRaceBody(body_div, key);
+  else
+    loadTable(body_div, key);
+}
+
+function buildRaceBody(body_div, key)
+{
+  var outerTable = "<table class='basic_table sep_table' border=1>";
+  var innerTable = "";
+  var col = 0;
+  var max_col = 2;
+  for (var i = 0; i < data[key].length; ++i)
+  {
+    if (col == 0)
+      innerTable += "<tr>";
+    for (var j = 0; j < data[key][i].children.length; ++j)
+    {
+      var c = data[key][i].children[j];
+      if (c.tagName == "name" && c.children.length == 0)
+        innerTable += "<td>" + c.textContent + "</td>";
+      // innerTable += "<td onclick=&quot;expandNode(" + key + ", " + c.tagName + ")&quot;>" + c.textContent + "</td>";
+    }
+    if (col == max_col)
+    {
+      innerTable += "</tr>";
+      col = 0;
+    }
+    else
+    {
+      col++;
+    }
+  }
+  if (col != 0)
+    innerTable += "</tr>";
+  innerTable += "</table><div></div>";
+  document.getElementById(body_div).children[1].innerHTML = outerTable + innerTable;
+
+  var tds = document.getElementById("characters").children[1].getElementsByTagName("td");
+  for (i = 0; i < tds.length; ++i)
+  {
+    var func = function ()
+    {
+      var string = tds[i].textContent;
+      document.getElementById("debug").innerHTML = string;
+    };
+    tds[i].onclick = func;
+  }
+  //Make each a button that will expand info about it
+}
+
+function testOnclick(element)
+{
+  document.getElementById("debug").innerHTML = element;
 }
 
 window.onload = loadXMLDoc;
