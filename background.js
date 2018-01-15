@@ -137,8 +137,7 @@ function buildRaceBody(body_div, key)
     {
       var c = data[key][i].children[j];
       if (c.tagName == "name" && c.children.length == 0)
-        innerTable += "<td>" + c.textContent + "</td>";
-      // innerTable += "<td onclick=&quot;expandNode(" + key + ", " + c.tagName + ")&quot;>" + c.textContent + "</td>";
+        innerTable += "<td arg=" + i + ">" + c.textContent + "</td>";
     }
     if (col == max_col)
     {
@@ -151,21 +150,36 @@ function buildRaceBody(body_div, key)
     }
   }
   if (col != 0)
+  {
     innerTable += "</tr>";
+  }
   innerTable += "</table><div></div>";
   document.getElementById(body_div).children[1].innerHTML = outerTable + innerTable;
 
   var tds = document.getElementById("characters").children[1].getElementsByTagName("td");
   for (i = 0; i < tds.length; ++i)
   {
-    var func = function ()
+    var func = (function (body_div, key, i)
     {
-      var string = tds[i].textContent;
-      document.getElementById("debug").innerHTML = string;
-    };
+      return function()
+      {
+        var text = "";
+        for (var j = 0; j < data[key][i].children.length; ++j)
+        {
+          var c = data[key][i].children[j];
+          text += "<p>" + capitalizeFirstLetter(c.tagName) + ": " + c.textContent + "</p>";
+        }
+        document.getElementById(body_div).children[1].children[1].innerHTML = text;
+      };
+    })(body_div, key, tds[i].attributes[0].value);
     tds[i].onclick = func;
   }
   //Make each a button that will expand info about it
+}
+
+function capitalizeFirstLetter(string)
+{
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function testOnclick(element)
