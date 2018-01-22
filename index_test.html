@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>The Forge</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="background.js"></script>
+  </head>
+  <body id=body>
+    <div class="locked_header">
+      <h1><center>The Forge</center></h1>
+        <table class="basic_table" id="locked_header_table">
+          <tr>
+          <th>Character Creator</th>
+          <th>Spell Grimoire</th>
+          <th>Tome of Beasts</th>
+          <th>Glorious Goods</th>
+        </tr>
+      </table>
+    </div>
+
+    <div id="main_body">
+      <div id="characters" class="body_section">
+        <div id="characters_header">
+          <table class="basic_table">
+            <tr>
+              <th>Race</th>
+              <th>Ability Scores/Feats</th>
+              <th>Background</th>
+              <th>Class/Level</th>
+              <th>Spells</th>
+              <th>Proficiencies</th>
+              <th>Equipment</th>
+              <th>Details</th>
+            </tr>
+          </table>
+        </div>
+        <div id=characters_body>
+          <div id="characters_body_race">
+            <!-- LOAD the race table -->
+            <table class="basic_table">
+            </table>
+          </div>
+          <div id="characters_body_feats">
+            <!-- LOAD the feats table -->
+            <table class="basic_table">
+            </table>
+          </div>
+          <div id="characters_body_background">
+            <!-- LOAD the background table -->
+            <table class="basic_table">
+            </table>
+          </div>
+          <div id="characters_body_class">
+            <!-- LOAD the class/level table -->
+            <table class="basic_table">
+              <tr>
+                <th>Class List</th>
+                <th>Level</th>
+                <th>Add Class</th>
+              </tr>
+              <tr>
+                <th>dropdown_list_here</th>
+                <th>dropdown_level_here</th>
+                <th>plus_button_here</th>
+              </tr>
+            </table>
+          </div>
+          <div id="characters_body_spells">
+            <!-- LOAD the spells table -->
+            <table class="basic_table">
+            </table>
+          </div>
+          <div id="characters_body_proficiencies">
+            <!-- LOAD the proficiencies table -->
+            <!-- Need to hardcode the total list of proficiencies for selections -->
+            <!-- Need to handle expertise as well -->
+            <table class="basic_table">
+            </table>
+          </div>
+          <div id="characters_body_equipment">
+            <!-- LOAD the equipment table -->
+            <table class="basic_table">
+            </table>
+          </div>
+          <div id="characters_body_details">
+            <table class="basic_table">
+              <tr><th>Name</th><th>INPUT_TEXT_BOX_HERE</th></tr>
+              <tr><th>Player Name</th><th>INPUT_TEXT_BOX_HERE</th></tr>
+              <tr><th>Sex</th><th>INPUT_TEXT_BOX_HERE</th></tr>
+              <tr><th>Age</th><th>INPUT_TEXT_BOX_HERE</th></tr>
+              <tr><th>Height</th><th>INPUT_TEXT_BOX_HERE</th></tr>
+              <tr><th>Weight</th><th>INPUT_TEXT_BOX_HERE</th></tr>
+              <tr><th>Alignment</th><th>DROPDOWN_BOX_HERE</th></tr>
+              <tr><th>XP</th><th>INPUT_TEXT_BOX_HERE</th></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div id="spells" class="body_section">
+        <div id=spells_header>
+          <table class="basic_table">
+            <tr>
+              <th>Class</th>
+              <th>Level</th>
+              <th>School</th>
+              <th>Search</th>
+            </tr>
+          </table>
+        </div>
+        <div id=spells_body>
+          <table class="basic_table">
+
+          </table>
+        </div>
+      </div>
+
+      <div id="monsters" class="body_section">
+        <div id=monsters_header>
+          <table class="basic_table">
+            <tr>
+              <th>Type</th>
+              <th>Alignment</th>
+              <th>Size</th>
+              <th>Min CR</th>
+              <th>Max CR</th>
+            </tr>
+          </table>
+        </div>
+        <div id=spells_body>
+          <table class="basic_table">
+
+          </table>
+        </div>
+      </div>
+
+      <div id="items" class="body_section">
+        <div id=items_header>
+          <table class="basic_table">
+            <tr>
+              <th>Type</th>
+              <th>Magic</th>
+              <th>Value</th>
+              <th>Rarity</th>
+            </tr>
+          </table>
+        </div>
+        <div id=items_body>
+          <table class="basic_table">
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+  </body>
+</html>

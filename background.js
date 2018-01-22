@@ -9,6 +9,15 @@ var data =
   "feat" : [],
   "race" : []
 };
+var selections =
+{
+  "race" : null,
+  "background" : null,
+  "items" : [],
+  "feats" : [],
+
+};
+console.log(selections);
 
 function loadXMLDoc()
 {
@@ -23,7 +32,6 @@ function loadXMLDoc()
   };
   xmlhttp.open("GET", "../DnDAppFiles/Compendiums/Full Compendium.xml", true);
   xmlhttp.send();
-  //TODO: Load Feats.xml
 }
 
 function loadData()
